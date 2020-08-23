@@ -1,0 +1,65 @@
+Sub code_test()
+ 
+  
+' set loop to work for all worksheets
+ Dim ws As Integer
+    Dim j As Integer
+    ws = ActiveWorkbook.Worksheets.Count
+    For g = 1 To ws
+   ' stock ticker name
+  Dim stock_ticker As String
+  ' find volume
+  Dim volume  As Double
+  volume = 0
+  ' put location for data info
+  Dim data_info As Integer
+  data_info = 2
+  
+    Next g
+  ' set i for tickers
+  For i = 2 To 80000
+    If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+      stock_ticker = Cells(i, 1).Value
+      volume = volume + Cells(i, 7).Value
+        Range("H" & data_info).Value = stock_ticker
+        Range("I" & data_info).Value = price_change
+        Range("K" & data_info).Value = volume
+      data_info = data_info + 1
+        price_change = Cells(i, 6).Value - Cells(i, 3).Value
+      volume = volume + Cells(i, 7).Value
+      End If
+      
+       If Cells(i, 9) <> 0 Then
+        
+        percent_change = Cells(i, 3) / Cells(i, 9)
+        Range("J" & data_info).Value = percent_change
+        End If
+        
+      Next i
+
+  Range("H1").Value = "Ticker"
+  Range("I1").Value = " Yearly Change"
+  Range("J1").Value = "Percent Change"
+  Range("K1").Value = "Total Stock Volume"
+  
+  
+  
+  End Sub
+  
+  Sub challenge_part()
+  
+  Range("O1").Value = "Ticker"
+  Range("P1").Value = "Value"
+  Range("N2").Value = "Greatest % Increase"
+  Range("N3").Value = "Greatest % Decrease"
+  Range("N4").Value = "Greatest Toatl Volume"
+  
+
+  
+  
+  
+  
+  
+  
+  
+  End Sub
